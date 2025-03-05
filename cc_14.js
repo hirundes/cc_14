@@ -21,13 +21,16 @@ function createTicketCard(name, issue, priority) {
 
     const resolveButton = document.createElement("button"); //Creating resolve button and making it work
     resolveButton.textContent = "Resolve";
-    resolveButton.addEventListener("click", (event) => {     
-        ticketCard.remove(); });
+    resolveButton.addEventListener("click", (event) => { 
+        event.stopPropagation();  //Task 4 - Child is only getting triggered not the parent so the message does not show    
+        
+        ticketContainer.removeChild(ticketCard); });
  
     ticketCard.appendChild(resolveButton); //Appending remove button
 
-    ticketContainer.appendChild(ticketCard); //Appending ticketCard to the ticket container
-}
+ticketContainer.appendChild(ticketCard); //Appending ticketCard to the ticket container
+};
+
 createTicketCard("Michael Smith", "Issue Description 1", "High Priority") //Test Case 1
 createTicketCard("John Smith", "Issue Description 2", "High Priority") //Test Case 1
 
@@ -41,7 +44,20 @@ function updatedTicketCards() {
         }
     )};
 
-updatedTicketCards()
+updatedTicketCards();
+
+//Task 4 - Support Ticket Resolution with Event Bubbling
+function eventListenerResolve() {  //Created function eventListenerResolve so it can be called at the end
+    const ticketContainer = document.getElementById("ticketContainer")  //
+    ticketContainer.addEventListener("click", function(event) {   //Attaching event listeners to ticket container
+        console.log("Ticket Card Clicked"); //Logged when card is clicked
+    })
+}
+
+eventListenerResolve(); //Calling for eventListenerResolve
+
+
+
 
 
 
