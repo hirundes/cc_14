@@ -2,29 +2,34 @@
 //HTML Content - Setting up ticketContainer
 
 //Task 2 - Support Tickets Dynamic Addition
-function createTicketCard(name, position) {
+function createTicketCard(name, issue, priority) {
     const ticketContainer = document.getElementById("ticketContainer"); 
     const ticketCard = document.createElement("div");
     ticketCard.setAttribute("class", "ticket-card");
 
-    const customerName = document.createElement("h3"); //Creating employeeName and Appending it to the card
+    const customerName = document.createElement("h3"); //Creating customerName and Appending it to the card
     customerName.textContent = name;
     ticketCard.appendChild(customerName);
 
-    const issueDescription = document.createElement("p"); //Creating employeePosition and Appending it to the card
-    issueDescription.textContent = position;
+    const issueDescription = document.createElement("p"); //Creating issueDescription and Appending it to the card
+    issueDescription.textContent = issue;
     ticketCard.appendChild(issueDescription);
 
-    const resolveButton = document.createElement("button"); //Creating remove button and making it work
-    resolveButton.textContent = "Remove";
+    const priorityDescription = document.createElement("p"); //Creating priorityDescription and Appending it to the card
+    priorityDescription.textContent = priority;
+    ticketCard.appendChild(priorityDescription);
+
+    const resolveButton = document.createElement("button"); //Creating resolve button and making it work
+    resolveButton.textContent = "Resolve";
     resolveButton.addEventListener("click", (event) => {     
-        event.stopPropagation();  //Child is only getting triggered not the parent so the message does not show
         ticketCard.remove(); });
  
     ticketCard.appendChild(resolveButton); //Appending remove button
 
-    ticketContainer.appendChild(ticketCard); //Appending employee card to the employee container
+    ticketContainer.appendChild(ticketCard); //Appending ticketCard to the ticket container
 }
+createTicketCard("Michael Smith", "Issue Description 1", "High Priority") //Test Case 1
+createTicketCard("John Smith", "Issue Description 2", "Low Priority") //Test Case 1
 
 
 
