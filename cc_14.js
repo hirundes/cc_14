@@ -29,7 +29,19 @@ function createTicketCard(name, issue, priority) {
     ticketContainer.appendChild(ticketCard); //Appending ticketCard to the ticket container
 }
 createTicketCard("Michael Smith", "Issue Description 1", "High Priority") //Test Case 1
-createTicketCard("John Smith", "Issue Description 2", "Low Priority") //Test Case 1
+createTicketCard("John Smith", "Issue Description 2", "High Priority") //Test Case 1
+
+//Task 3 - Highlighting High Priority Tickets
+function updatedTicketCards() {
+
+    const ticketCardsNodeList = document.querySelectorAll(".ticket-card"); //Using document.querySelectorAll to select all cards with High Priority
+    const ticketCardArray = Array.from(ticketCardsNodeList)
+    ticketCardArray.forEach(card => {
+            card.style.backgroundColor = '#ffc0cb';
+        }
+    )};
+
+updatedTicketCards()
 
 
 
