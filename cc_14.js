@@ -6,6 +6,7 @@ function createTicketCard(name, issue, priority) {
     const ticketContainer = document.getElementById("ticketContainer"); 
     const ticketCard = document.createElement("div");
     ticketCard.setAttribute("class", "ticket-card");
+    ticketCard.setAttribute("data-priority", priority); //For Task 3 updateTicketCards
 
     const customerName = document.createElement("h3"); //Creating customerName and Appending it to the card
     customerName.textContent = name;
@@ -28,22 +29,23 @@ function createTicketCard(name, issue, priority) {
  
     ticketCard.appendChild(resolveButton); //Appending remove button
 
+
 ticketContainer.appendChild(ticketCard); //Appending ticketCard to the ticket container
 enableInlineEditing(ticketCard); //Calling Task 5 code
 };
 
-createTicketCard("Michael Smith", "Issue Description 1", "High Priority") //Test Case 1
-createTicketCard("John Smith", "Issue Description 2", "High Priority") //Test Case 1
+createTicketCard("Michael Smith", "Issue Description 1", "High") //Test Case 1
+createTicketCard("John Smith", "Issue Description 2", "Low") //Test Case 1
 
 //Task 3 - Highlighting High Priority Tickets
 function updatedTicketCards() {
-
-    const ticketCardsNodeList = document.querySelectorAll(".ticket-card"); //Using document.querySelectorAll to select all cards with High Priority
+    const ticketCardsNodeList = document.querySelectorAll("[data-priority='High']");//Using document.querySelectorAll to select all cards with High Priority
     const ticketCardArray = Array.from(ticketCardsNodeList)
-    ticketCardArray.forEach(card => {
-            card.style.backgroundColor = '#ffc0cb';
-        }
-    )};
+    ticketCardArray.forEach(ticket => {
+        ticket.style.backgroundColor = "red";
+        ticket.style.color = "white";
+    });
+};
 
 updatedTicketCards();
 
