@@ -90,7 +90,7 @@ card.addEventListener("dblclick", function() { //Detecting double clicking of ca
         saveBtn.addEventListener("click", function() { //Clicking save button adds the details and saves    
             nameHeading.textContent = nameInput.value;       
             positionPara.textContent = positionInput.value;
-            const priorityPara = document.createElement("p");
+            priorityPara = document.createElement("p");
             priorityPara.textContent = priorityInput.value
 
             card.innerHTML = "";           
