@@ -68,25 +68,36 @@ function enableInlineEditing (card) {
 card.addEventListener("dblclick", function() { //Detecting double clicking of card and creating inputs and save button
         const nameInput = document.createElement("input");        
         nameInput.type = "text";        
-        nameInput.value = nameHeading.textContent;        
+        nameInput.value = nameHeading.textContent;   
+
         const positionInput = document.createElement("input");        
         positionInput.type = "text";       
-        positionInput.value = positionPara.textContent;    
+        positionInput.value = positionPara.textContent; 
+           
+        const priorityInput = document.createElement("input"); 
+        priorityInput.type = "text";
+        priorityInput.value = "Priority:";
+        
         const saveBtn = document.createElement("button"); 
         saveBtn.textContent = "Save";
 
         card.innerHTML = "";    //Adding it to the card.
         card.appendChild(nameInput);     
         card.appendChild(positionInput);
+        card.appendChild(priorityInput);
         card.appendChild(saveBtn);
 
         saveBtn.addEventListener("click", function() { //Clicking save button adds the details and saves    
             nameHeading.textContent = nameInput.value;       
             positionPara.textContent = positionInput.value;
+            const priorityPara = document.createElement("p");
+            priorityPara.textContent = priorityInput.value
 
             card.innerHTML = "";           
               card.appendChild(nameHeading);      
-                card.appendChild(positionPara);
+              card.appendChild(positionPara);
+              card.appendChild(priorityPara);
+
                 removeBtn = document.createElement("button");   //Making sure remove function is not disturbed.
                 removeBtn.textContent = "Remove";
                 removeBtn.classList.add("remove-btn");
