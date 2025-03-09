@@ -27,7 +27,7 @@ function createTicketCard(name, issue, priority) {
         
         ticketContainer.removeChild(ticketCard); });
  
-    ticketCard.appendChild(resolveButton); //Appending remove button
+    ticketCard.appendChild(resolveButton); //Appending resolve button
 
 
 ticketContainer.appendChild(ticketCard); //Appending ticketCard to the ticket container
@@ -63,7 +63,7 @@ eventListenerResolve(); //Calling for eventListenerResolve
 function enableInlineEditing (card) {
     const nameHeading = card.querySelector("h3") //Selecting where the card is 
     const positionPara = card.querySelector("p")
-    let resolveBtn = card.querySelector("button.resolve-btn") //Remove button function is not getting effected
+    let removeBtn = card.querySelector("button.remove-btn") //Resolve button function is not getting effected
 
 card.addEventListener("dblclick", function() { //Detecting double clicking of card and creating inputs and save button
         const nameInput = document.createElement("input");        
